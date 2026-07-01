@@ -1,0 +1,28 @@
+{
+  "name": "aurora-reader",
+  "version": "1.0.0",
+  "description": "Aurora Reader — a local PDF/book reader for Android built with Capacitor.",
+  "main": "src/index.html",
+  "scripts": {
+    "build": "node build.js",
+    "sync": "npm run build && cap sync android",
+    "open:android": "cap open android",
+    "add:android": "cap add android"
+  },
+  "keywords": ["capacitor", "android", "pdf-reader", "book-reader"],
+  "author": "Chethan Prem",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/app": "^6.0.1",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/filesystem": "^6.0.1",
+    "@capacitor/preferences": "^6.0.2",
+    "@capacitor/status-bar": "^6.0.1",
+    "@capawesome/capacitor-file-picker": "^6.1.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2",
+    "esbuild": "^0.23.1"
+  }
+}

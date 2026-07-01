@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Aurora Reader</title>
+<link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="css/themes.css" />
+<link rel="stylesheet" href="css/reader.css" />
+</head>
+<body class="theme-shell-dark">
+
+  <!-- ===================== APP SHELL ===================== -->
+  <div id="app">
+
+    <!-- ---- HOME ---- -->
+    <section id="screen-home" class="screen active">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark">◆</span> Aurora Reader</div>
+        <button class="icon-btn" data-action="open-search" aria-label="Search">⌕</button>
+      </header>
+      <div class="scroll-area" id="home-content"><!-- injected by home.js --></div>
+    </section>
+
+    <!-- ---- LIBRARY ---- -->
+    <section id="screen-library" class="screen">
+      <header class="topbar">
+        <div class="page-title">Library</div>
+        <button class="icon-btn" data-action="import-book" aria-label="Import">＋</button>
+      </header>
+      <div class="lib-filters" id="lib-filters">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="pdf">PDF</button>
+        <button class="chip" data-filter="epub">Books</button>
+        <button class="chip" data-filter="favorite">Favorites</button>
+      </div>
+      <div class="scroll-area" id="library-content"><!-- injected by library.js --></div>
+    </section>
+
+    <!-- ---- READER ---- -->
+    <section id="screen-reader" class="screen">
+      <header class="reader-topbar">
+        <button class="icon-btn" data-action="reader-back" aria-label="Back">←</button>
+        <div class="reader-title" id="reader-title">Untitled</div>
+        <div class="reader-actions">
+          <button class="icon-btn" data-action="toggle-thumbs" aria-label="Pages">▤</button>
+          <button class="icon-btn" data-action="reader-search" aria-label="Search">⌕</button>
+          <button class="icon-btn" data-action="toggle-bookmark" aria-label="Bookmark">☆</button>
+          <button class="icon-btn" data-action="reader-more" aria-label="More">⋯</button>
+        </div>
+      </header>
+
+      <div class="reader-body">
+        <aside class="thumb-rail" id="thumb-rail"><!-- injected by reader.js --></aside>
+        <div class="reader-canvas-wrap" id="reader-canvas-wrap">
+          <div id="reader-page-container" class="reader-page-container">
+            <!-- pdf.js canvas + text layer injected here -->
+          </div>
+        </div>
+      </div>
+
+      <footer class="reader-footer">
+        <button class="icon-btn small" data-action="font-toggle" aria-label="Font size">Aa</button>
+        <input type="range" id="page-slider" class="page-slider" min="1" value="1" step="1" />
+        <span class="page-indicator" id="page-indicator">1 / 1</span>
+        <button class="icon-btn small" data-action="open-appearance" aria-label="Appearance">☀</button>
+      </footer>
+    </section>
+
+    <!-- ---- NOTES / HIGHLIGHTS ---- -->
+    <section id="screen-notes" class="screen">
+      <header class="topbar">
+        <div class="page-title" id="notes-title">Notes &amp; Highlights</div>
+      </header>
+      <div class="tab-row">
+        <button class="tab active" data-tab="highlights">Highlights</button>
+        <button class="tab" data-tab="bookmarks">Bookmarks</button>
+        <button class="tab" data-tab="notes">Notes</button>
+      </div>
+      <div class="scroll-area" id="notes-content"><!-- injected by notes.js --></div>
+    </section>
+
+    <!-- ---- SETTINGS / PROFILE ---- -->
+    <section id="screen-settings" class="screen">
+      <header class="topbar">
+        <div class="page-title">Settings</div>
+      </header>
+      <div class="scroll-area" id="settings-content"><!-- injected by settings.js --></div>
+    </section>
+
+    <!-- ---- BOTTOM NAV ---- -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-nav="home"><span class="nav-ico">⌂</span><span>Home</span></button>
+      <button class="nav-btn" data-nav="library"><span class="nav-ico">▥</span><span>Library</span></button>
+      <button class="nav-btn" data-nav="notes"><span class="nav-ico">✎</span><span>Notes</span></button>
+      <button class="nav-btn" data-nav="settings"><span class="nav-ico">⚙</span><span>Settings</span></button>
+    </nav>
+  </div>
+
+  <!-- ===================== APPEARANCE PANEL (modal sheet) ===================== -->
+  <div id="appearance-sheet" class="sheet-overlay">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <h3>Appearance</h3>
+        <button class="icon-btn" data-action="close-appearance">✕</button>
+      </div>
+      <div class="sheet-body" id="appearance-body"><!-- injected by themePicker.js --></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <!-- pdf.js (CDN, ESM build) -->
+  <script type="module">
+    import * as pdfjsLib from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.min.mjs';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.worker.min.mjs';
+    window.pdfjsLib = pdfjsLib;
+  </script>
+
+  <!-- Capacitor core + plugins (added by `cap sync`, present after `npm install`) -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

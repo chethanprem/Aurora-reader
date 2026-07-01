@@ -1,0 +1,22 @@
+{
+  "appId": "com.chethanprem.aurorareader",
+  "appName": "Aurora Reader",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "backgroundColor": "#0F0B1E",
+  "android": {
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 800,
+      "backgroundColor": "#0F0B1E",
+      "androidSplashResourceName": "splash",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#0F0B1E"
+    }
+  }
+}

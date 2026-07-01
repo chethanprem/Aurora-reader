@@ -1,0 +1,14 @@
+node_modules/
+dist/
+www/
+.DS_Store
+
+# Android build output (keep the platform project itself committed,
+# ignore only the generated build artifacts)
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+android/captures/
+*.apk
+*.aab
